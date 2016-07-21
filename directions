@@ -5,17 +5,11 @@
             <div class="col-md-8">
                 <div class="overlay2" onclick="style.pointerEvents='none'"></div>
                 <iframe class="direction_map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6213.737088254069!2d-77.356515!3d38.858366!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb1ea126b72e10a39!2sFairfax+Corner!5e0!3m2!1sen!2sus!4v1468349008174" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                
-                <h2 class="promo_list_name">From I-66:</h2>
-                <p class="promo_list_desc">From I-66, take Exit 57B – West (Route 50). Pass the exit for Fair Oaks Mall and then take the South exit for West Ox Road (Route 608). At the 3rd stoplight turn left onto Monument Drive. At the 4th stoplight, turn left onto Fairfax Corner Avenue. P.F. Chang’s China Bistro and Uncle Julio's Rio Grande Café flank the entrance.</p>
-                
-                <h2 class="promo_list_name">From Fairfax County Parkway (Route 286, old Route 7100):</h2>
-                <p class="promo_list_desc">Turn East onto Fair Lakes Parkway, heading towards Fair Oaks Mall. At the 3rd stoplight, turn right onto Monument Drive. At the 3rd stoplight, turn left onto Fairfax Corner Avenue. P.F. Chang’s China Bistro and Uncle Julio's Rio Grande Café flank the entrance.
-</p>
+                <div id="mm_page_content" class="promo_list_desc"></div>
             </div>
             <div class="col-md-4 hidden_phone">
-                <img style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/1456330978000/Plaza2.png" class="" alt="">
-                <img style="" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/1456330970000/Plaza.png" class="" alt="">
+                <img style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/56c740936e6f642d56000000/image/png/1456330978000/Plaza2.png" class="" alt="">
+                <img style="" src="http://assets.codecloudapp.com/sites/56c740936e6f642d56000000/image/png/1456330970000/Plaza.png" class="" alt="">
             </div> 
         </div>
     </div>
@@ -23,6 +17,23 @@
 <script>
     $(document).ready(function(e){
         init(e);
-        show_content()
+        loadMallDataCached(renderPage);
     })
+    
+    function renderPage(){
+        var pathArray = window.location.pathname.split( '/' );
+        var slug = pathArray[pathArray.length-1];
+        
+        prefix = get_prefix();
+        $('#top_banner').addClass(slug)
+        var pages_json = prefix+"/pages/fairfax-directions.json"
+        $.getJSON(pages_json).done(function(data) {
+            $('#mm_page_content').html(data.body);
+        }).fail(function(jqXHR) {
+            if (jqXHR.status == 404) {
+                $("#mm_page_content").text("Sorry. We cant find the page you looking for.");
+            }
+        }); 
+        show_content();
+    }
 </script>
