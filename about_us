@@ -3,7 +3,11 @@
     <div class="about_container">
         <div class="row">
             <div class="col-md-8 ">
-                 <img  style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/undefined/Screen Shot 2016-07-12 at 2.55.12 PM.png" class="hidden_phone" alt="">
+                <img class="about_banner" src="http://assets.codecloudapp.com/sites/56c740936e6f642d56000000/image/png/1456347907000/about_us.png" alt="">
+                <div id="mm_page_content" class="promo_list_desc"></div>
+            </div>
+            <div class="col-md-4">
+                <img  style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/undefined/Screen Shot 2016-07-12 at 2.55.12 PM.png" class="hidden_phone" alt="">
                 <div class="col-md-12 property_right">
                     <h2 class="promo_list_name">Property Management</h2>
                     <div class="col-md-12">
@@ -18,7 +22,6 @@
                            Assistant Property Manager<br/>vdupree@petersoncos.com<br/>703-227-0890
                         </div>
                     </div>
-                    
                 </div>
             </div> 
         </div>
