@@ -2,16 +2,8 @@
     <h4 class="promo_main_header">About Us</h3>
     <div class="about_container">
         <div class="row">
-            <div class="col-md-8">
-                <img class="about_banner" src="http://cdn.mallmaverick.com/system/site_images/photos/000/001/567/original/FFC_Coastal.jpg?1389043439" alt="">
-                
-                <p class="promo_list_desc">Fairfax Corner is a beautiful mixed-use shopping center that offers main street style shopping at both national chains and local boutiques. It features fun events & entertainment, a state of the art movie theater and the best restaurants in Fairfax, VA. Fairfax Corner also combines office space for rent and residential living to make it the ideal place to live, work, dine and shop.</p><br/>
-                
-                <p class="promo_list_desc">Fairfax Corner is an exciting “destination” in the truest and best sense of the word, with everything integrated into a cohesive ensemble of walkable streets, public places and architecturally striking buildings. Planned on the basis of traditional “main streets,” Fairfax Corner provides shoppers, office employees and residents with fun things to do and the energy of being a part of an urban-feeling project.</p>
-                
-            </div>
-            <div class="col-md-4">
-                <img  style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/undefined/Screen Shot 2016-07-12 at 2.55.12 PM.png" class="hidden_phone" alt="">
+            <div class="col-md-8 ">
+                 <img  style="margin-bottom:20px;" src="http://assets.codecloudapp.com/sites/578535a86e6f646740000000/image/png/undefined/Screen Shot 2016-07-12 at 2.55.12 PM.png" class="hidden_phone" alt="">
                 <div class="col-md-12 property_right">
                     <h2 class="promo_list_name">Property Management</h2>
                     <div class="col-md-12">
@@ -36,6 +28,23 @@
 <script>
     $(document).ready(function(e){
         init(e);
-        show_content()
+        loadMallDataCached(renderPage);
     })
+    
+    function renderPage(){
+        var pathArray = window.location.pathname.split( '/' );
+        var slug = pathArray[pathArray.length-1];
+        
+        prefix = get_prefix();
+        $('#top_banner').addClass(slug)
+        var pages_json = prefix+"/pages/vagateway-about-us.json"
+        $.getJSON(pages_json).done(function(data) {
+            $('#mm_page_content').html(data.body);
+        }).fail(function(jqXHR) {
+            if (jqXHR.status == 404) {
+                $("#mm_page_content").text("Sorry. We cant find the page you looking for.");
+            }
+        }); 
+        show_content();
+    }
 </script>
