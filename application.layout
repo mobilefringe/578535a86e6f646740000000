@@ -39,7 +39,7 @@
     <script src="http://mallmaverick.codecloudapp.com/mustache_mallmaverick.js?v=0.3"></script>
     
     <script>
-        setEndPoint('http://fairfax.mallmaverick.com/api/v2/fairfax/all.json');
+        setEndPoint('http://fairfax.mallmaverick.com/api/v3/fairfax/all.json');
     </script>
 </head>
 
