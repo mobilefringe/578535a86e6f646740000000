@@ -1,3 +1,9 @@
+<style>
+    .margin_40 {
+    margin-bottom: 20px !important;
+}
+</style>
+
 <div class="hidden-popup-bg">
     <div class="hidden-popup-form">
         <div class="popup-header">
